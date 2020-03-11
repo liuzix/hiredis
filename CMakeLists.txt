@@ -57,12 +57,14 @@ IF(BUILD_STATIC_LIBS)
 		read.c
 		sds.c
 		sockcompat.c
+        alloc.c
 	)
     set_target_properties (hiredis_lib_static PROPERTIES OUTPUT_NAME hiredis_static DEBUG_OUTPUT_NAME hiredis_staticd)
     INSTALL( TARGETS hiredis_lib_static ${INSTALL_EXPORT}
              RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
              LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
              ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    TARGET_INCLUDE_DIRECTORIES(hiredis_lib_static PUBLIC .)
 ENDIF()
 
 SET_TARGET_PROPERTIES(hiredis
